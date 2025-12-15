@@ -1,30 +1,31 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-black pt-8 pb-2 px-6 border-t border-[#e5e5e5] mt-48">
+    <footer className="w-full bg-heritage-cream text-foreground pt-12 pb-4 px-6 border-t border-heritage-gold/20 mt-24">
       <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Brand - Left side */}
           <div>
-            <img 
-              src="/Linea_Jewelry_Inc-2.svg" 
-              alt="Linea Jewelry Inc." 
-              className="mb-4 h-6 w-auto"
-            />
-            <p className="text-sm font-light text-black/70 leading-relaxed max-w-md mb-6">
-              Minimalist jewelry crafted for the modern individual
+            <h2 className="text-2xl font-serif text-foreground mb-4">
+              Noor-e-Chikan
+            </h2>
+            <p className="text-base font-display text-muted-foreground leading-relaxed max-w-md mb-6">
+              Preserving the timeless art of Lucknowi Chikankari, one stitch at a time. 
+              Handcrafted elegance from the heart of Lucknow.
             </p>
             
             {/* Contact Information */}
-            <div className="space-y-2 text-sm font-light text-black/70">
+            <div className="space-y-3 text-base font-display text-muted-foreground">
               <div>
-                <p className="font-normal text-black mb-1">Visit Us</p>
-                <p>123 Madison Avenue</p>
-                <p>New York, NY 10016</p>
+                <p className="font-serif text-foreground mb-1">Visit Our Atelier</p>
+                <p>Hazratganj, Lucknow</p>
+                <p>Uttar Pradesh, India 226001</p>
               </div>
               <div>
-                <p className="font-normal text-black mb-1 mt-3">Contact</p>
-                <p>+1 (212) 555-0123</p>
-                <p>hello@lineajewelry.com</p>
+                <p className="font-serif text-foreground mb-1 mt-4">Contact</p>
+                <p>+91 522 XXX XXXX</p>
+                <p>hello@noorechikan.com</p>
               </div>
             </div>
           </div>
@@ -33,35 +34,35 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Shop */}
             <div>
-              <h4 className="text-sm font-normal mb-4">Shop</h4>
+              <h4 className="text-sm font-serif mb-4 tracking-wide">Shop</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">New In</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Rings</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Earrings</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Bracelets</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Necklaces</a></li>
+                <li><Link to="/category/kurtas" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Kurtas</Link></li>
+                <li><Link to="/category/sarees" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Sarees</Link></li>
+                <li><Link to="/category/dupattas" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Dupattas</Link></li>
+                <li><Link to="/category/suits" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Suit Sets</Link></li>
+                <li><Link to="/category/kurtis" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Kurtis</Link></li>
               </ul>
             </div>
 
             {/* Support */}
             <div>
-              <h4 className="text-sm font-normal mb-4">Support</h4>
+              <h4 className="text-sm font-serif mb-4 tracking-wide">Support</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Size Guide</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Care Instructions</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Returns</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Shipping</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Contact</a></li>
+                <li><Link to="/about/size-guide" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Size Guide</Link></li>
+                <li><Link to="/about/care" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Care Instructions</Link></li>
+                <li><Link to="/about/returns" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Returns</Link></li>
+                <li><Link to="/about/shipping" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Shipping</Link></li>
+                <li><Link to="/about/customer-care" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
               </ul>
             </div>
 
             {/* Connect */}
             <div>
-              <h4 className="text-sm font-normal mb-4">Connect</h4>
+              <h4 className="text-sm font-serif mb-4 tracking-wide">Connect</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Instagram</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Pinterest</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Newsletter</a></li>
+                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Instagram</a></li>
+                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Facebook</a></li>
+                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">WhatsApp</a></li>
               </ul>
             </div>
           </div>
@@ -69,18 +70,18 @@ const Footer = () => {
       </div>
 
       {/* Bottom section - edge to edge separator */}
-      <div className="border-t border-[#e5e5e5] -mx-6 px-6 pt-2">
+      <div className="border-t border-heritage-gold/20 -mx-6 px-6 pt-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm font-light text-black mb-1 md:mb-0">
-            © 2024 Linea. All rights reserved.
+          <p className="text-sm font-display text-muted-foreground mb-2 md:mb-0">
+            © 2024 Noor-e-Chikan. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a href="/privacy-policy" className="text-sm font-light text-black hover:text-black/70 transition-colors">
+            <Link to="/privacy-policy" className="text-sm font-display text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
-            </a>
-            <a href="/terms-of-service" className="text-sm font-light text-black hover:text-black/70 transition-colors">
+            </Link>
+            <Link to="/terms-of-service" className="text-sm font-display text-muted-foreground hover:text-foreground transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

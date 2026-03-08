@@ -74,24 +74,10 @@ const Navigation = () => {
       ]
     },
     { 
-      name: "New Arrivals", 
-      href: "/category/new-arrivals",
-      submenuItems: [
-        "This Week",
-        "Summer Collection",
-        "Festive Edit",
-        "Limited Edition",
-        "Pre-Orders"
-      ]
-    },
-    { 
       name: "About", 
       href: "/about/our-story",
       submenuItems: [
         "Our Story",
-        "The Craft",
-        "Size Guide",
-        "Customer Care",
         "Visit Us"
       ]
     }

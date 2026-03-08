@@ -20,7 +20,7 @@ const EditorialSection = () => {
               love for delicate needlework gave birth to this exquisite art form.
             </p>
             <p className="text-lg font-display text-muted-foreground leading-relaxed">
-              At Noor-e-Chikan, we honor this legacy by working directly with master artisans 
+              At <span className="text-heritage-gold italic font-serif">Noor</span>-e-Chikan, we honor this legacy by working directly with master artisans 
               whose families have practiced this craft for generations, ensuring every piece 
               carries the authentic soul of Lucknawi tradition.
             </p>

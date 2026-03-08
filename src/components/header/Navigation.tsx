@@ -134,7 +134,7 @@ const Navigation = () => {
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Link to="/" className="block">
             <h1 className="text-xl md:text-2xl font-serif text-foreground tracking-wide">
-              Noor-e-Chikan
+              <span className="text-heritage-gold italic">Noor</span>-e-Chikan
             </h1>
           </Link>
         </div>

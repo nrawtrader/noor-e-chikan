@@ -4,9 +4,9 @@ const StatusBar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const usps = [
-    "Free shipping over €50",
-    "365 days warranty",
-    "+100,000 happy customers"
+    "Free shipping on orders above ₹2,999",
+    "100% Handcrafted Chikankari",
+    "Trusted by 50,000+ customers across India"
   ];
 
   useEffect(() => {

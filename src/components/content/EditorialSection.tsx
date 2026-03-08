@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import heritageRumiDarwaza from "@/assets/heritage-rumi-darwaza.jpg";
 
 const EditorialSection = () => {
   return (
@@ -34,16 +35,14 @@ const EditorialSection = () => {
         </div>
         
         <div className="order-first md:order-last">
-          <div className="w-full aspect-[4/5] overflow-hidden bg-heritage-ivory relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center p-8">
-                <p className="text-6xl md:text-8xl font-serif text-heritage-gold/30">نور</p>
-                <p className="text-sm tracking-[0.3em] text-muted-foreground mt-4 font-display">
-                  NOOR • LIGHT
-                </p>
-              </div>
-            </div>
-            <div className="absolute inset-0 border border-heritage-gold/20"></div>
+          <div className="w-full aspect-[4/5] overflow-hidden relative group">
+            <img
+              src={heritageRumiDarwaza}
+              alt="Rumi Darwaza - The Gateway of Lucknow"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/10"></div>
+            <div className="absolute inset-0 border border-white/10"></div>
           </div>
         </div>
       </div>

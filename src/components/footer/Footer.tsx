@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand - Left side */}
           <div>
             <h2 className="text-2xl font-serif text-foreground mb-4">
-              Noor-e-Chikan
+              <span className="text-heritage-gold italic">Noor</span>-e-Chikan
             </h2>
             <p className="text-base font-display text-muted-foreground leading-relaxed max-w-md mb-6">
               Preserving the timeless art of Lucknowi Chikankari, one stitch at a time. 

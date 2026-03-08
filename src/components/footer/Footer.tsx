@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand - Left side */}
           <div>
             <h2 className="text-2xl font-serif text-foreground mb-4">
-              Noor-e-Chikan
+              <span className="text-heritage-gold italic">Noor</span>-e-Chikan
             </h2>
             <p className="text-base font-display text-muted-foreground leading-relaxed max-w-md mb-6">
               Preserving the timeless art of Lucknowi Chikankari, one stitch at a time. 
@@ -44,15 +44,12 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Support */}
+            {/* About */}
             <div>
-              <h4 className="text-sm font-serif mb-4 tracking-wide">Support</h4>
+              <h4 className="text-sm font-serif mb-4 tracking-wide">About</h4>
               <ul className="space-y-2">
-                <li><Link to="/about/size-guide" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Size Guide</Link></li>
-                <li><Link to="/about/care" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Care Instructions</Link></li>
-                <li><Link to="/about/returns" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Returns</Link></li>
-                <li><Link to="/about/shipping" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Shipping</Link></li>
-                <li><Link to="/about/customer-care" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
+                <li><Link to="/about/our-story" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Our Story</Link></li>
+                <li><Link to="/about/visit-us" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Visit Us</Link></li>
               </ul>
             </div>
 

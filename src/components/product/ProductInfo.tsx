@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { 
-  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator 
+import {
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
 import { Minus, Plus } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 const ProductInfo = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("M");
+  const { addToCart } = useCart();
+  const { toast } = useToast();
 
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   const incrementQuantity = () => setQuantity(prev => prev + 1);
@@ -54,7 +58,7 @@ const ProductInfo = () => {
         
         <div className="space-y-2">
           <h3 className="text-sm font-light text-foreground">Embroidery</h3>
-          <p className="text-sm font-light text-muted-foreground">Hand-embroidered Chikankari with Tepchi, Bakhiya & Jaali work</p>
+          <p className="text-sm font-light text-muted-foreground">Hand-embroidered Chikankari with Tepchi, Bakhiya &amp; Jaali work</p>
         </div>
         
         <div className="space-y-2">
@@ -106,7 +110,25 @@ const ProductInfo = () => {
           </div>
         </div>
 
-        <Button className="w-full h-12 bg-foreground text-background hover:bg-foreground/90 font-light rounded-none">
+        <Button
+          className="w-full h-12 bg-foreground text-background hover:bg-foreground/90 font-light rounded-none"
+          onClick={() => {
+            addToCart({
+              id: 1,
+              name: "Noor White Kurta",
+              price: "₹4,850",
+              image: "",
+              category: "Kurtas",
+              size: selectedSize,
+              fabric: "Pure Cotton Cambric",
+              quantity,
+            });
+            toast({
+              title: "Added to Bag",
+              description: `Noor White Kurta (${selectedSize}) × ${quantity}`,
+            });
+          }}
+        >
           Add to Bag
         </Button>
       </div>

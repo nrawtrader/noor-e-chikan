@@ -2,7 +2,9 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingBag from "./ShoppingBag";
+import AuthModal from "@/components/auth/AuthModal";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 
 const Navigation = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -10,8 +12,10 @@ const Navigation = () => {
   const [offCanvasType, setOffCanvasType] = useState<'favorites' | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShoppingBagOpen, setIsShoppingBagOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   const { cartItems, updateQuantity, totalItems } = useCart();
+  const { user, logout } = useAuth();
 
   const popularSearches = [
     "White Kurta",
@@ -101,7 +105,28 @@ const Navigation = () => {
 
         {/* Right icons */}
         <div className="flex items-center space-x-2">
-          <button 
+          {/* Account */}
+          {user ? (
+            <div className="hidden lg:flex items-center gap-2">
+              <Link to="/orders" className="p-2 text-nav-foreground hover:text-nav-hover transition-colors duration-200 text-xs font-display tracking-wide">
+                {user.first_name}
+              </Link>
+              <button onClick={logout} className="p-2 text-nav-foreground hover:text-nav-hover transition-colors duration-200 text-xs font-display tracking-wide">
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsAuthOpen(true)}
+              className="hidden lg:block p-2 text-nav-foreground hover:text-nav-hover transition-colors duration-200"
+              aria-label="Sign In"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </button>
+          )}
+          <button
             className="p-2 text-nav-foreground hover:text-nav-hover transition-colors duration-200"
             aria-label="Search"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -251,6 +276,9 @@ const Navigation = () => {
         </div>
       )}
       
+      {/* Auth Modal */}
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+
       {/* Shopping Bag Component */}
       <ShoppingBag
         isOpen={isShoppingBagOpen}

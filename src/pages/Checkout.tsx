@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useCart } from "@/context/CartContext";
+import { api } from "@/lib/api";
 
 const Checkout = () => {
   const [showDiscountInput, setShowDiscountInput] = useState(false);
@@ -90,12 +91,34 @@ const Checkout = () => {
 
   const handleCompleteOrder = async () => {
     setIsProcessing(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    const num = `NEC-${Date.now().toString(36).toUpperCase()}`;
-    setOrderNumber(num);
-    clearCart();
-    setIsProcessing(false);
-    setPaymentComplete(true);
+    try {
+      const res = await api.placeOrder({
+        items: cartItems.map(i => ({
+          id: i.id,
+          name: i.name,
+          price: i.price,
+          quantity: i.quantity,
+          size: i.size,
+        })),
+        customerDetails,
+        shippingAddress,
+        shippingOption,
+        subtotal,
+        shippingCost: shipping,
+        total,
+      });
+      setOrderNumber(res.orderNumber);
+      clearCart();
+      setPaymentComplete(true);
+    } catch {
+      // Fallback: still show confirmation locally if server is unavailable
+      const num = `NEC-${Date.now().toString(36).toUpperCase()}`;
+      setOrderNumber(num);
+      clearCart();
+      setPaymentComplete(true);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 import Index from "./pages/Index";
 import Category from "./pages/Category";
 import ProductDetail from "./pages/ProductDetail";
@@ -13,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import OurStory from "./pages/about/OurStory";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Orders from "./pages/Orders";
 
 const queryClient = new QueryClient();
 
@@ -21,21 +23,24 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <CartProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/category/:category" element={<Category />} />
-            <Route path="/product/:productId" element={<ProductDetail />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/about/our-story" element={<OurStory />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/category/:category" element={<Category />} />
+              <Route path="/product/:productId" element={<ProductDetail />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/about/our-story" element={<OurStory />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

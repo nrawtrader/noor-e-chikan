@@ -1,0 +1,5 @@
+node_modules/
+noor.db
+noor.db-shm
+noor.db-wal
+.env

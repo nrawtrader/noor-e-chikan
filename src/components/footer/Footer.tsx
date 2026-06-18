@@ -1,84 +1,133 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-heritage-cream text-foreground pt-12 pb-4 px-6 border-t border-heritage-gold/20 mt-24">
-      <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Brand - Left side */}
+    <footer className="w-full bg-foreground text-background mt-24">
+      <div className="border-b border-white/10 px-6 py-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2 className="text-2xl font-serif text-foreground mb-4">
-              <span className="text-heritage-gold italic">Noor</span>-e-Chikan
-            </h2>
-            <p className="text-base font-display text-muted-foreground leading-relaxed max-w-md mb-6">
-              Preserving the timeless art of Lucknowi Chikankari, one stitch at a time. 
-              Handcrafted elegance from the heart of Lucknow.
+            <p className="text-xs tracking-[0.4em] font-display uppercase text-heritage-gold mb-3">
+              Stay Connected
             </p>
-            
-            {/* Contact Information */}
-            <div className="space-y-3 text-base font-display text-muted-foreground">
-              <div>
-                <p className="font-serif text-foreground mb-1">Visit Our Atelier</p>
-                <p>Hazratganj, Lucknow</p>
-                <p>Uttar Pradesh, India 226001</p>
-              </div>
-              <div>
-                <p className="font-serif text-foreground mb-1 mt-4">Contact</p>
-                <p>+91 522 XXX XXXX</p>
-                <p>hello@noorechikan.com</p>
-              </div>
-            </div>
+            <h3 className="text-2xl md:text-3xl font-serif text-white leading-snug">
+              Receive Letters from Lucknow
+            </h3>
+            <p className="text-sm font-display text-white/50 mt-2">
+              New arrivals, craft stories &amp; exclusive previews &#8212; in your inbox.
+            </p>
           </div>
-
-          {/* Link lists - Right side */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Shop */}
-            <div>
-              <h4 className="text-sm font-serif mb-4 tracking-wide">Shop</h4>
-              <ul className="space-y-2">
-                <li><Link to="/category/kurtas" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Kurtas</Link></li>
-                <li><Link to="/category/sarees" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Sarees</Link></li>
-                <li><Link to="/category/dupattas" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Dupattas</Link></li>
-                <li><Link to="/category/suits" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Suit Sets</Link></li>
-                <li><Link to="/category/kurtis" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Kurtis</Link></li>
-              </ul>
-            </div>
-
-            {/* About */}
-            <div>
-              <h4 className="text-sm font-serif mb-4 tracking-wide">About</h4>
-              <ul className="space-y-2">
-                <li><Link to="/about/our-story" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Our Story</Link></li>
-                <li><Link to="/about/visit-us" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Visit Us</Link></li>
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div>
-              <h4 className="text-sm font-serif mb-4 tracking-wide">Connect</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Instagram</a></li>
-                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">Facebook</a></li>
-                <li><a href="#" className="text-base font-display text-muted-foreground hover:text-foreground transition-colors">WhatsApp</a></li>
-              </ul>
-            </div>
+          <div className="flex w-full md:w-auto gap-0 min-w-[320px]">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 bg-white/5 border border-white/15 px-4 py-3 text-sm font-display text-white placeholder:text-white/30 outline-none focus:border-heritage-gold/50 transition-colors"
+            />
+            <button className="bg-heritage-gold text-white px-5 py-3 flex items-center gap-2 text-xs tracking-[0.2em] font-display uppercase hover:bg-heritage-gold/90 transition-colors shrink-0">
+              Subscribe <ArrowRight size={12} />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom section - edge to edge separator */}
-      <div className="border-t border-heritage-gold/20 -mx-6 px-6 pt-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm font-display text-muted-foreground mb-2 md:mb-0">
-            © 2024 Noor-e-Chikan. All rights reserved.
-          </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm font-display text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms-of-service" className="text-sm font-display text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
+      <div className="px-6 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+            <div>
+              <h2 className="text-3xl font-serif text-white mb-5">
+                <span className="text-heritage-gold italic">Noor</span>-e-Chikan
+              </h2>
+              <p className="text-base font-display text-white/50 leading-relaxed max-w-sm mb-8">
+                Preserving the timeless art of Lucknowi Chikankari, one stitch at a time.
+                Handcrafted elegance from the heart of Lucknow, since generations.
+              </p>
+
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-px w-10 bg-heritage-gold/30" />
+                <span className="text-sm font-serif text-heritage-gold/40 italic">चिकन</span>
+                <div className="h-px w-10 bg-heritage-gold/30" />
+              </div>
+
+              <div className="space-y-5 text-sm font-display text-white/40">
+                <div>
+                  <p className="font-serif text-white/70 mb-1.5 text-base">Visit Our Atelier</p>
+                  <p>Hazratganj, Lucknow</p>
+                  <p>Uttar Pradesh, India 226001</p>
+                </div>
+                <div>
+                  <p className="font-serif text-white/70 mb-1.5 text-base mt-4">Contact</p>
+                  <p>+91 522 XXX XXXX</p>
+                  <p>hello@noorechikan.com</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-8">
+              <div>
+                <h4 className="text-xs tracking-[0.3em] font-display uppercase text-white/40 mb-6">Shop</h4>
+                <ul className="space-y-3">
+                  {["Kurtas", "Sarees", "Dupattas", "Suit Sets", "Kurtis"].map((item) => (
+                    <li key={item}>
+                      <Link
+                        to={`/category/${item.toLowerCase().replace(" ", "-")}`}
+                        className="text-sm font-display text-white/60 hover:text-heritage-gold transition-colors duration-300"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xs tracking-[0.3em] font-display uppercase text-white/40 mb-6">About</h4>
+                <ul className="space-y-3">
+                  {[
+                    { label: "Our Story", href: "/about/our-story" },
+                    { label: "Visit Us", href: "/about/visit-us" },
+                  ].map((item) => (
+                    <li key={item.label}>
+                      <Link
+                        to={item.href}
+                        className="text-sm font-display text-white/60 hover:text-heritage-gold transition-colors duration-300"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xs tracking-[0.3em] font-display uppercase text-white/40 mb-6">Connect</h4>
+                <ul className="space-y-3">
+                  {["Instagram", "Facebook", "WhatsApp"].map((item) => (
+                    <li key={item}>
+                      <a
+                        href="#"
+                        className="text-sm font-display text-white/60 hover:text-heritage-gold transition-colors duration-300"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs font-display text-white/30">
+              &copy; 2024 Noor-e-Chikan. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link to="/privacy-policy" className="text-xs font-display text-white/30 hover:text-white/60 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="text-xs font-display text-white/30 hover:text-white/60 transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>

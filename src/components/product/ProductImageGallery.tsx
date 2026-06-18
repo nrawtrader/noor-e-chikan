@@ -1,17 +1,17 @@
 import { useState, useRef } from "react";
 import ImageZoom from "./ImageZoom";
-import pantheonImage from "@/assets/pantheon.jpg";
-import eclipseImage from "@/assets/eclipse.jpg";
-import haloImage from "@/assets/halo.jpg";
-import organicEarring from "@/assets/organic-earring.png";
-import linkBracelet from "@/assets/link-bracelet.png";
+import artisanImage from "@/assets/hero-chikankari-artisan.jpg";
+import fabricImage from "@/assets/hero-chikankari-fabric.jpg";
+import handsImage from "@/assets/hero-hands-embroidery.jpg";
+import elephantImage from "@/assets/heritage-elephant.jpg";
+import lotusImage from "@/assets/heritage-lotus.jpg";
 
 const productImages = [
-  pantheonImage,
-  organicEarring,
-  eclipseImage,
-  linkBracelet,
-  haloImage,
+  artisanImage,
+  fabricImage,
+  handsImage,
+  elephantImage,
+  lotusImage,
 ];
 
 const ProductImageGallery = () => {
@@ -50,10 +50,8 @@ const ProductImageGallery = () => {
 
     if (Math.abs(difference) > minSwipeDistance) {
       if (difference > 0) {
-        // Swipe left - next image
         nextImage();
       } else {
-        // Swipe right - previous image
         prevImage();
       }
     }
@@ -64,7 +62,6 @@ const ProductImageGallery = () => {
 
   return (
     <div className="w-full">
-      {/* Desktop: Vertical scrolling gallery (1024px and above) */}
       <div className="hidden lg:block">
         <div className="space-y-4">
           {productImages.map((image, index) => (
@@ -83,7 +80,6 @@ const ProductImageGallery = () => {
         </div>
       </div>
 
-      {/* Tablet/Mobile: Image slider (below 1024px) */}
       <div className="lg:hidden">
         <div className="relative">
           <div 
@@ -100,7 +96,6 @@ const ProductImageGallery = () => {
             />
           </div>
           
-          {/* Dots indicator */}
           <div className="flex justify-center mt-4 gap-2">
             {productImages.map((_, index) => (
               <button
@@ -115,7 +110,6 @@ const ProductImageGallery = () => {
         </div>
       </div>
 
-      {/* Image Zoom Modal */}
       <ImageZoom
         images={productImages}
         initialIndex={zoomInitialIndex}

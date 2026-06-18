@@ -52,7 +52,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        /* Noor-e-Chikan specific colors */
         "status-bar": {
           DEFAULT: "hsl(var(--status-bar))",
           foreground: "hsl(var(--status-bar-foreground))",
@@ -67,6 +66,8 @@ export default {
           maroon: "hsl(var(--heritage-maroon))",
           cream: "hsl(var(--heritage-cream))",
           ivory: "hsl(var(--heritage-ivory))",
+          blush: "hsl(var(--heritage-blush))",
+          sage: "hsl(var(--heritage-sage))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

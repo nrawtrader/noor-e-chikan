@@ -1,16 +1,8 @@
-import { ArrowRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ShoppingBag from "./ShoppingBag";
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  quantity: number;
-  category: string;
-}
+import { useCart } from "@/context/CartContext";
 
 const Navigation = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -18,39 +10,8 @@ const Navigation = () => {
   const [offCanvasType, setOffCanvasType] = useState<'favorites' | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isShoppingBagOpen, setIsShoppingBagOpen] = useState(false);
-  
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Lucknowi Kurta",
-      price: "₹4,850",
-      image: "",
-      quantity: 1,
-      category: "Kurtas"
-    },
-    {
-      id: 2,
-      name: "Chikan Dupatta",
-      price: "₹2,200", 
-      image: "",
-      quantity: 1,
-      category: "Dupattas"
-    }
-  ]);
 
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  
-  const updateQuantity = (id: number, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      setCartItems(items => items.filter(item => item.id !== id));
-    } else {
-      setCartItems(items => 
-        items.map(item => 
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
-  };
+  const { cartItems, updateQuantity, totalItems } = useCart();
 
   const popularSearches = [
     "White Kurta",
@@ -73,12 +34,11 @@ const Navigation = () => {
         "Kurtis"
       ]
     },
-    { 
-      name: "About", 
+    {
+      name: "About",
       href: "/about/our-story",
       submenuItems: [
-        "Our Story",
-        "Visit Us"
+        "Our Story"
       ]
     }
   ];
@@ -292,11 +252,9 @@ const Navigation = () => {
       )}
       
       {/* Shopping Bag Component */}
-      <ShoppingBag 
+      <ShoppingBag
         isOpen={isShoppingBagOpen}
         onClose={() => setIsShoppingBagOpen(false)}
-        cartItems={cartItems}
-        updateQuantity={updateQuantity}
         onViewFavorites={() => {
           setIsShoppingBagOpen(false);
           setOffCanvasType('favorites');

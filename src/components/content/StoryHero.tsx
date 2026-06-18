@@ -16,16 +16,16 @@ const StoryHero = () => {
   const textY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.3], [0.4, 0.7]);
 
-  // Second image (hands close-up) reveal
-  const handsOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
-  const handsScale = useTransform(scrollYProgress, [0.25, 0.6], [1.1, 1]);
+  // Second image (hands close-up) reveal — starts immediately on first scroll
+  const handsOpacity = useTransform(scrollYProgress, [0.08, 0.28], [0, 1]);
+  const handsScale = useTransform(scrollYProgress, [0.08, 0.4], [1.1, 1]);
 
   // Third image (fabric detail) reveal
-  const fabricOpacity = useTransform(scrollYProgress, [0.5, 0.75], [0, 1]);
+  const fabricOpacity = useTransform(scrollYProgress, [0.38, 0.58], [0, 1]);
 
   // Text reveals
-  const taglineOpacity = useTransform(scrollYProgress, [0.55, 0.7], [0, 1]);
-  const taglineY = useTransform(scrollYProgress, [0.55, 0.7], [40, 0]);
+  const taglineOpacity = useTransform(scrollYProgress, [0.42, 0.58], [0, 1]);
+  const taglineY = useTransform(scrollYProgress, [0.42, 0.58], [40, 0]);
 
   return (
     <div ref={containerRef} className="relative h-[300vh]">

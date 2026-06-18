@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
-import artisanImage from "@/assets/hero-chikankari-artisan.jpg";
-import fabricImage from "@/assets/hero-chikankari-fabric.jpg";
+import { useCart } from "@/context/CartContext";
 
 const Checkout = () => {
   const [showDiscountInput, setShowDiscountInput] = useState(false);
@@ -45,41 +44,14 @@ const Checkout = () => {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);
-  
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Noor White Kurta",
-      price: "₹4,850",
-      quantity: 1,
-      image: artisanImage,
-      size: "M"
-    },
-    {
-      id: 2,
-      name: "Lucknowi Dupatta", 
-      price: "₹3,200",
-      quantity: 1,
-      image: fabricImage
-    }
-  ]);
+  const [orderNumber, setOrderNumber] = useState("");
+  const { cartItems, updateQuantity: ctxUpdateQuantity, clearCart, totalPrice } = useCart();
 
-  const updateQuantity = (id: number, newQuantity: number) => {
-    if (newQuantity <= 0) {
-      setCartItems(items => items.filter(item => item.id !== id));
-    } else {
-      setCartItems(items => 
-        items.map(item => 
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
-      );
-    }
+  const updateQuantity = (id: number, size: string | undefined, newQuantity: number) => {
+    ctxUpdateQuantity(id, size, newQuantity);
   };
 
-  const subtotal = cartItems.reduce((sum, item) => {
-    const price = parseFloat(item.price.replace('₹', '').replace(',', ''));
-    return sum + (price * item.quantity);
-  }, 0);
+  const subtotal = totalPrice;
 
   const getShippingCost = () => {
     switch (shippingOption) {
@@ -119,6 +91,9 @@ const Checkout = () => {
   const handleCompleteOrder = async () => {
     setIsProcessing(true);
     await new Promise(resolve => setTimeout(resolve, 2000));
+    const num = `NEC-${Date.now().toString(36).toUpperCase()}`;
+    setOrderNumber(num);
+    clearCart();
     setIsProcessing(false);
     setPaymentComplete(true);
   };
@@ -137,13 +112,15 @@ const Checkout = () => {
                 
                 <div className="space-y-6">
                   {cartItems.map((item) => (
-                    <div key={item.id} className="flex gap-4">
+                    <div key={`${item.id}-${item.size}`} className="flex gap-4">
                       <div className="w-20 h-20 bg-muted rounded-none overflow-hidden">
-                        <img 
-                          src={item.image} 
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
+                        {item.image && (
+                          <img 
+                            src={item.image} 
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                       <div className="flex-1">
                         <h3 className="font-light text-foreground">{item.name}</h3>
@@ -155,7 +132,7 @@ const Checkout = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}
                             className="h-8 w-8 p-0 rounded-none border-muted-foreground/20"
                           >
                             <Minus className="h-3 w-3" />
@@ -166,7 +143,7 @@ const Checkout = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}
                             className="h-8 w-8 p-0 rounded-none border-muted-foreground/20"
                           >
                             <Plus className="h-3 w-3" />
@@ -178,6 +155,9 @@ const Checkout = () => {
                       </div>
                     </div>
                   ))}
+                  {cartItems.length === 0 && (
+                    <p className="text-sm text-muted-foreground text-center py-4">Your bag is empty.</p>
+                  )}
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-muted-foreground/20">
@@ -394,8 +374,11 @@ const Checkout = () => {
                     <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                       <Check className="h-8 w-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-light text-foreground mb-2">Order Complete!</h3>
-                    <p className="text-muted-foreground">Thank you for your purchase. Your order confirmation has been sent to your email.</p>
+                    <h3 className="text-xl font-light text-foreground mb-2">Order Confirmed!</h3>
+                    <p className="text-muted-foreground mb-3">Thank you for your purchase. Your order confirmation has been sent to your email.</p>
+                    {orderNumber && (
+                      <p className="text-sm text-heritage-gold font-display tracking-wide">Order #{orderNumber}</p>
+                    )}
                   </div>
                 )}
               </div>
